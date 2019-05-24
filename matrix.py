@@ -2,29 +2,24 @@ import time
 import sys
 
 millis = int(round(time.time() * 1000))
-USE_TH = True
 try:
-    FR = int(sys.argv[1])
-    BK = int(sys.argv[2])
+    N = int(sys.argv[1])
 except IndexError:
-    print("Usage: python matrix.py int:FRONT_WHEELS_COUNT int:BACK_WHEELS_COUNT")
+    print("Usage: python matrix.py ELEMENT_COUNT")
     exit()
     
-FNAME = "com_" + str(FR) + "x" + str(BK) + "_bMatrix.txt"
-N = FR+BK
+FNAME = "com_" + str(N) + "x" + str(N) + "_bMatrix.txt"
 T = 2**N
 A = []
 
 print("CURRENT SETTINGS:\n")
-print("T="+str(T)+" | FRONT="+str(FR)+" | BACK="+str(BK)+" | N="+str(N)+"\n")
+print("T="+str(T)+" | N="+str(N)+"\n")
 raw_input("Press Enter to continue...")
 
 with open(FNAME,'w') as F:
-    if USE_TH:
-        F.write("[FRONT]\t[BACK]\n")
     for i in range(0,T):
         strVal = '{0:0{C}b}'.format(i,C=N)
-        line = "[" + strVal[:FR] + "]\t[" + strVal[BK:] + "]"
+        line = "[" + strVal + "]"
         F.write(line + "\n")
         print("Row dumped: " +line+ " | Data="+strVal+"\n")
     F.write("THIS IS KUNNOW's CODE!\n")
