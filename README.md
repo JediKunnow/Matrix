@@ -1,7 +1,8 @@
 # Matrix
 Binary computation matrix generator
 
-#Usage
+# Usage
+
 <code>python matrix.py ELEMENT_COUNT</code>
 
 ELEMENT_COUNT is the number of element presents in each matrix.
